@@ -50,6 +50,10 @@ def check_ip():
         update_dns_config(subdomain, last_ip, current_ip)
         if not environ.get('UNATTENDED'):
             input("Press Enter to push the new DNS configuration, or Ctrl+C to cancel.")
-        subprocess.run(["dnscontrol", "push"])
+        domain = environ.get('DOMAIN')
+        if domain:
+            subprocess.run(["dnscontrol", "push", "--domains", domain])
+        else:
+            subprocess.run(["dnscontrol", "push"])
     else:
-        logging.debug("IP has not changed")
+        logging.info(f"IP is still {current_ip}, no changes needed.")
