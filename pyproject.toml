@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=63.2.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dyndnsctrl"
+version = "0.0.1"
+description = "Automatically update a DNS record with your current IP address"
+readme = "README.md"
+authors = [{ name = "blee", email = "git@blee.tube" }]
+license = { file = "LICENSE" }
+keywords = ["reddit"]
+dependencies = [
+    'build>=0.8.0',
+    'requests',
+    'python-dotenv>=1.0.0',
+]
+requires-python = ">=3.8.10"
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: System :: Monitoring",
+    "License :: OSI Approved :: Apache Software License",    
+]
+
+[project.urls]
+Homepage = "https://github.com/bleetube/dyndnsctrl"
+
+# https://setuptools.pypa.io/en/latest/userguide/entry_point.html
+[project.scripts]
+dyndnsctrl = "dyndnsctrl.main:check_ip"
